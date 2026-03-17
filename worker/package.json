@@ -1,0 +1,19 @@
+{
+  "name": "gnews-rss-worker",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "hono": "^4.0.0",
+    "@supabase/supabase-js": "^2.39.0",
+    "fast-xml-parser": "^4.3.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "wrangler": "^3.0.0",
+    "typescript": "^5.3.0"
+  }
+}

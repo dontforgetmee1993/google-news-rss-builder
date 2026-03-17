@@ -1,0 +1,15 @@
+{
+  "name": "google-news-rss-builder",
+  "private": true,
+  "workspaces": ["frontend", "worker"],
+  "scripts": {
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:worker": "npm run dev --workspace=worker",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:worker\"",
+    "build:frontend": "npm run build --workspace=frontend",
+    "build:worker": "npm run build --workspace=worker"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
