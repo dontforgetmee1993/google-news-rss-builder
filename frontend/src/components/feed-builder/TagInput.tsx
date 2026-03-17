@@ -1,4 +1,5 @@
-import { useState, KeyboardEvent, ClipboardEvent } from "react";
+import { useState } from "react";
+import type { KeyboardEvent, ClipboardEvent } from "react";
 import { X } from "lucide-react";
 import { cn } from "../../lib/utils";
 
