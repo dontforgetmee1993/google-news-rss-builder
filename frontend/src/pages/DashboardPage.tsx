@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Plus, Search } from "lucide-react";
 import { useFeeds } from "../hooks/useFeeds";
 import { FeedCard } from "../components/feed-list/FeedCard";
@@ -11,6 +12,7 @@ const PAGE_SIZE = 12;
 export default function DashboardPage() {
   const { feeds, loading, error, total, currentPage, fetchFeeds, deleteFeed, toggleActive } = useFeeds();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
 
   const doSearch = useCallback(() => {
@@ -25,18 +27,18 @@ export default function DashboardPage() {
   async function handleDelete(id: string, name: string) {
     try {
       await deleteFeed(id);
-      toast({ title: "Feed deleted", description: `"${name}" has been removed.` });
+      toast({ title: t("dashboard.feedDeleted"), description: t("dashboard.feedDeletedDesc", { name }) });
     } catch {
-      toast({ title: "Error", description: "Could not delete feed.", variant: "destructive" });
+      toast({ title: t("common.error"), description: t("dashboard.couldNotDelete"), variant: "destructive" });
     }
   }
 
   async function handleToggle(id: string, current: boolean) {
     try {
       await toggleActive(id, !current);
-      toast({ title: current ? "Feed deactivated" : "Feed activated" });
+      toast({ title: current ? t("dashboard.feedDeactivated") : t("dashboard.feedActivated") });
     } catch {
-      toast({ title: "Error", description: "Could not update feed.", variant: "destructive" });
+      toast({ title: t("common.error"), description: t("dashboard.couldNotUpdate"), variant: "destructive" });
     }
   }
 
@@ -47,9 +49,9 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-bold">My Feeds</h1>
+          <h1 className="text-2xl font-bold">{t("dashboard.title")}</h1>
           {total > 0 && (
-            <p className="text-sm text-muted-foreground mt-0.5">{total} feed{total !== 1 ? "s" : ""}</p>
+            <p className="text-sm text-muted-foreground mt-0.5">{t("dashboard.feedCount", { count: total })}</p>
           )}
         </div>
         <Link
@@ -57,7 +59,7 @@ export default function DashboardPage() {
           className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         >
           <Plus className="h-4 w-4" />
-          Create New Feed
+          {t("dashboard.createNewFeed")}
         </Link>
       </div>
 
@@ -68,7 +70,7 @@ export default function DashboardPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleSearchKey}
-          placeholder="Search feeds..."
+          placeholder={t("dashboard.searchPlaceholder")}
           className="flex h-10 w-full rounded-md border border-input bg-background pl-9 pr-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         />
       </div>
@@ -104,12 +106,10 @@ export default function DashboardPage() {
             <Search className="h-8 w-8 text-muted-foreground" />
           </div>
           <h2 className="text-lg font-semibold mb-2">
-            {search ? "No feeds match your search" : "No feeds yet"}
+            {search ? t("dashboard.noMatchTitle") : t("dashboard.emptyTitle")}
           </h2>
           <p className="text-sm text-muted-foreground mb-6 max-w-xs">
-            {search
-              ? "Try a different search term."
-              : "Create your first custom Google News RSS feed to get started."}
+            {search ? t("dashboard.noMatchDesc") : t("dashboard.emptyDesc")}
           </p>
           {!search && (
             <Link
@@ -117,7 +117,7 @@ export default function DashboardPage() {
               className="inline-flex items-center gap-2 h-10 px-4 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               <Plus className="h-4 w-4" />
-              Create Your First Feed
+              {t("dashboard.createFirstFeed")}
             </Link>
           )}
         </div>
@@ -145,17 +145,17 @@ export default function DashboardPage() {
             disabled={currentPage <= 1}
             className="h-9 px-4 rounded-md border text-sm font-medium hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            Previous
+            {t("common.previous")}
           </button>
           <span className="text-sm text-muted-foreground">
-            Page {currentPage} of {totalPages}
+            {t("dashboard.pageOf", { current: currentPage, total: totalPages })}
           </span>
           <button
             onClick={() => fetchFeeds(currentPage + 1, search)}
             disabled={currentPage >= totalPages}
             className="h-9 px-4 rounded-md border text-sm font-medium hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            Next
+            {t("common.next")}
           </button>
         </div>
       )}

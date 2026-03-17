@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { apiFetch } from "../lib/api";
 import { FeedBuilderForm } from "../components/feed-builder/FeedBuilderForm";
 import { useToast } from "../components/ui/use-toast";
@@ -8,6 +9,7 @@ import type { Feed } from "../types/feed";
 export default function FeedEditPage() {
   const { id } = useParams<{ id: string }>();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [feed, setFeed] = useState<Feed | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -22,7 +24,7 @@ export default function FeedEditPage() {
 
   function handleSuccess(updated: Feed) {
     setFeed(updated);
-    toast({ title: "Feed updated!", description: `"${updated.name}" has been saved.` });
+    toast({ title: t("feedEdit.feedUpdated"), description: t("feedEdit.feedUpdatedDesc", { name: updated.name }) });
   }
 
   if (loading) {
@@ -39,9 +41,9 @@ export default function FeedEditPage() {
   if (notFound || !feed) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold mb-2">Feed Not Found</h1>
-        <p className="text-muted-foreground mb-4">This feed doesn't exist or you don't have access.</p>
-        <Link to="/dashboard" className="text-primary underline">Back to Dashboard</Link>
+        <h1 className="text-2xl font-bold mb-2">{t("feedEdit.notFoundTitle")}</h1>
+        <p className="text-muted-foreground mb-4">{t("feedEdit.notFoundDesc")}</p>
+        <Link to="/dashboard" className="text-primary underline">{t("feedEdit.backToDashboard")}</Link>
       </div>
     );
   }
@@ -49,8 +51,8 @@ export default function FeedEditPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Edit Feed</h1>
-        <p className="text-muted-foreground mt-1">Update the filters for "{feed.name}".</p>
+        <h1 className="text-2xl font-bold">{t("feedEdit.title")}</h1>
+        <p className="text-muted-foreground mt-1">{t("feedEdit.description", { name: feed.name })}</p>
       </div>
       <FeedBuilderForm feed={feed} feedId={id} onSuccess={handleSuccess} />
     </div>

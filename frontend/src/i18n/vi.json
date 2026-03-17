@@ -1,0 +1,183 @@
+{
+  "common": {
+    "error": "Lỗi",
+    "loading": "Đang tải...",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "previous": "Trước",
+    "next": "Tiếp",
+    "tryAgain": "Thử lại",
+    "copiedToClipboard": "Đã sao chép!",
+    "unexpectedError": "Lỗi không mong muốn",
+    "unexpectedErrorDesc": "Đã xảy ra lỗi không mong muốn."
+  },
+  "header": {
+    "brand": "RSS Builder",
+    "dashboard": "Bảng điều khiển",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập"
+  },
+  "footer": {
+    "text": "© {{year}} RSS Builder · Được hỗ trợ bởi Google News RSS"
+  },
+  "errorBoundary": {
+    "title": "Đã xảy ra lỗi",
+    "tryAgain": "Thử lại"
+  },
+  "home": {
+    "title": "Tùy chỉnh RSS Feed từ Google News",
+    "description": "Tạo RSS feed cá nhân với bộ lọc từ khóa, tên miền, quốc gia và thời gian. Sử dụng với mọi trình đọc RSS — Feedly, Inoreader, Thunderbird, và nhiều hơn nữa.",
+    "getStarted": "Bắt đầu ngay",
+    "howItWorks": "Cách hoạt động",
+    "step1Title": "1. Cấu hình",
+    "step1Desc": "Thiết lập từ khóa, tên miền, quốc gia, ngôn ngữ và bộ lọc thời gian để nhắm chính xác tin tức bạn quan tâm.",
+    "step2Title": "2. Xem trước",
+    "step2Desc": "Xem các bài viết phù hợp theo thời gian thực trước khi lưu. Tinh chỉnh bộ lọc cho đến khi bạn có feed hoàn hảo.",
+    "step3Title": "3. Đăng ký",
+    "step3Desc": "Nhận URL RSS proxy riêng để dán vào bất kỳ trình đọc RSS nào. Feed của bạn luôn được cập nhật tự động."
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "subtitle": "Chúng tôi sẽ gửi magic link để bạn đăng nhập.",
+    "magicLinkSent": "Đã gửi magic link!",
+    "magicLinkSentDesc": "Chúng tôi đã gửi magic link tới <strong>{{email}}</strong>. Kiểm tra hộp thư của bạn!",
+    "useDifferentEmail": "Dùng email khác",
+    "emailLabel": "Email",
+    "emailPlaceholder": "ban@example.com",
+    "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
+    "genericError": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "sending": "Đang gửi...",
+    "sendMagicLink": "Gửi Magic Link"
+  },
+  "authCallback": {
+    "timedOut": "Xác thực đã hết hạn. Vui lòng đăng nhập lại.",
+    "verifying": "Đang xác thực đăng nhập...",
+    "tryAgain": "Thử lại"
+  },
+  "dashboard": {
+    "title": "Feed của tôi",
+    "feedCount_one": "{{count}} feed",
+    "feedCount_other": "{{count}} feed",
+    "createNewFeed": "Tạo Feed mới",
+    "searchPlaceholder": "Tìm kiếm feed...",
+    "noMatchTitle": "Không tìm thấy feed phù hợp",
+    "noMatchDesc": "Thử từ khóa tìm kiếm khác.",
+    "emptyTitle": "Chưa có feed nào",
+    "emptyDesc": "Tạo feed Google News RSS tùy chỉnh đầu tiên của bạn.",
+    "createFirstFeed": "Tạo Feed đầu tiên",
+    "feedDeleted": "Đã xóa feed",
+    "feedDeletedDesc": "\"{{name}}\" đã được xóa.",
+    "couldNotDelete": "Không thể xóa feed.",
+    "feedDeactivated": "Đã tắt feed",
+    "feedActivated": "Đã kích hoạt feed",
+    "couldNotUpdate": "Không thể cập nhật feed.",
+    "pageOf": "Trang {{current}} / {{total}}"
+  },
+  "feedCreate": {
+    "title": "Tạo Feed mới",
+    "description": "Cấu hình bộ lọc cho Google News RSS feed.",
+    "feedCreated": "Đã tạo feed!",
+    "feedCreatedDesc": "\"{{name}}\" đã sẵn sàng sử dụng."
+  },
+  "feedEdit": {
+    "title": "Chỉnh sửa Feed",
+    "description": "Cập nhật bộ lọc cho \"{{name}}\".",
+    "notFoundTitle": "Không tìm thấy Feed",
+    "notFoundDesc": "Feed này không tồn tại hoặc bạn không có quyền truy cập.",
+    "backToDashboard": "Quay lại Bảng điều khiển",
+    "feedUpdated": "Đã cập nhật feed!",
+    "feedUpdatedDesc": "\"{{name}}\" đã được lưu."
+  },
+  "feedBuilder": {
+    "feedName": "Tên Feed",
+    "feedNamePlaceholder": "Feed Công nghệ",
+    "slug": "Slug",
+    "slugPlaceholder": "feed-cong-nghe",
+    "slugHelp": "Dùng trong URL RSS: /rss/{{slug}}",
+    "descriptionLabel": "Mô tả",
+    "descriptionPlaceholder": "Mô tả tùy chọn cho feed này",
+    "searchFilters": "Bộ lọc tìm kiếm",
+    "keywordsAnd": "Từ khóa (VÀ)",
+    "keywordsPlaceholder": "Thêm từ khóa...",
+    "keywordsHelp": "Tất cả từ khóa phải xuất hiện trong bài viết",
+    "exactPhrases": "Cụm từ chính xác",
+    "exactPhrasesPlaceholder": "Thêm cụm từ...",
+    "exactPhrasesHelp": "Đặt trong dấu ngoặc kép — ví dụ \"trí tuệ nhân tạo\"",
+    "orKeywords": "Từ khóa HOẶC",
+    "orKeywordsPlaceholder": "Thêm từ khóa HOẶC...",
+    "orKeywordsHelp": "Ít nhất một trong số này phải xuất hiện",
+    "excludedKeywords": "Từ khóa loại trừ",
+    "excludedKeywordsPlaceholder": "Thêm từ khóa loại trừ...",
+    "excludedKeywordsHelp": "Bài viết chứa những từ này sẽ bị loại",
+    "domains": "Tên miền",
+    "domainsPlaceholder": "ví dụ reuters.com",
+    "domainsHelp": "Lọc theo nguồn tin cụ thể",
+    "localeTime": "Vùng miền & Thời gian",
+    "makePublic": "Cho phép truy cập công khai",
+    "feedSaved": "Đã lưu feed!",
+    "feedSavedDesc": "\"{{name}}\" đã được lưu.",
+    "failedToSave": "Không thể lưu feed",
+    "saving": "Đang lưu...",
+    "updateFeed": "Cập nhật Feed",
+    "saveFeed": "Lưu Feed"
+  },
+  "countrySelect": {
+    "label": "Quốc gia & Ngôn ngữ",
+    "selectCountry": "Chọn quốc gia...",
+    "searchCountry": "Tìm quốc gia...",
+    "noResults": "Không có kết quả.",
+    "langInfo": "Ngôn ngữ: {{language}} · CEID: {{ceid}}"
+  },
+  "tagInput": {
+    "maxReached": "Đã đạt tối đa {{max}} thẻ",
+    "countHelp": "{{count}}/{{max}} · Nhấn Enter hoặc dấu phẩy để thêm"
+  },
+  "timeRange": {
+    "label": "Khoảng thời gian",
+    "noFilter": "Không lọc",
+    "last24h": "24 giờ qua",
+    "last7d": "7 ngày qua",
+    "last30d": "30 ngày qua",
+    "lastYear": "Năm qua",
+    "customRange": "Tùy chỉnh",
+    "afterDate": "Sau ngày",
+    "beforeDate": "Trước ngày"
+  },
+  "urlPreview": {
+    "label": "URL đã tạo",
+    "placeholder": "Cấu hình feed để tạo URL",
+    "copied": "Đã sao chép!",
+    "copiedDesc": "URL đã được sao chép."
+  },
+  "feedCard": {
+    "today": "hôm nay",
+    "yesterday": "hôm qua",
+    "daysAgo": "{{count}} ngày trước",
+    "monthsAgo": "{{count}} tháng trước",
+    "active": "Hoạt động",
+    "inactive": "Tạm dừng",
+    "actions": "Thao tác",
+    "copyRssUrl": "Sao chép URL RSS",
+    "deactivate": "Tạm dừng",
+    "activate": "Kích hoạt",
+    "moreKeywords": "+{{count}} nữa",
+    "views": "{{count}} lượt xem",
+    "created": "Tạo {{time}}",
+    "deleteConfirm": "Xóa \"{{name}}\"?",
+    "deleteWarning": "Hành động này không thể hoàn tác."
+  },
+  "feedPreview": {
+    "title": "Xem trước Feed",
+    "preview": "Xem trước",
+    "placeholder": "Nhấn \"Xem trước\" để xem bài viết phù hợp, hoặc thử từ khóa khác.",
+    "articleCount_one": "Hiển thị {{count}} bài viết",
+    "articleCount_other": "Hiển thị {{count}} bài viết"
+  },
+  "feedPreviewItem": {
+    "minsAgo": "{{count}} phút trước",
+    "hoursAgo": "{{count}} giờ trước",
+    "daysAgo": "{{count}} ngày trước"
+  }
+}

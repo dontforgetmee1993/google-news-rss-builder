@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider, ProtectedRoute } from "./hooks/useAuth";
 import { Layout } from "./components/layout/Layout";
@@ -12,12 +13,14 @@ import FeedCreatePage from "./pages/FeedCreatePage";
 import FeedEditPage from "./pages/FeedEditPage";
 
 export default function App() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const handler = (event: PromiseRejectionEvent) => {
       toast({
         variant: "destructive",
-        title: "Unexpected error",
-        description: event.reason?.message ?? "An unexpected error occurred.",
+        title: t("common.unexpectedError"),
+        description: event.reason?.message ?? t("common.unexpectedErrorDesc"),
       });
     };
     window.addEventListener("unhandledrejection", handler);

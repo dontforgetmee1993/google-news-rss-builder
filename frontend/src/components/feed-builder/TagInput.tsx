@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { KeyboardEvent, ClipboardEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { cn } from "../../lib/utils";
 
@@ -14,6 +15,7 @@ interface TagInputProps {
 
 export function TagInput({ label, placeholder, tags, onChange, maxTags = 20, helpText }: TagInputProps) {
   const [inputValue, setInputValue] = useState("");
+  const { t } = useTranslation();
 
   function addTags(raw: string[]) {
     const cleaned = raw
@@ -90,7 +92,7 @@ export function TagInput({ label, placeholder, tags, onChange, maxTags = 20, hel
         </div>
       </div>
       <p className="text-xs text-muted-foreground">
-        {atMax ? `Maximum ${maxTags} tags reached` : `${tags.length}/${maxTags} · Press Enter or comma to add`}
+        {atMax ? t("tagInput.maxReached", { max: maxTags }) : t("tagInput.countHelp", { count: tags.length, max: maxTags })}
       </p>
     </div>
   );

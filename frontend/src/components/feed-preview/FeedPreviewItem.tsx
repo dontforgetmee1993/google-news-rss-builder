@@ -1,21 +1,24 @@
+import { useTranslation } from "react-i18next";
 import type { RSSItem } from "../../types/feed";
 
 interface FeedPreviewItemProps {
   item: RSSItem;
 }
 
-function relativeTime(pubDate: string): string {
-  if (!pubDate) return "";
-  const diff = Date.now() - new Date(pubDate).getTime();
-  const mins = Math.floor(diff / 60000);
-  if (mins < 60) return `${mins}m ago`;
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return `${hrs}h ago`;
-  const days = Math.floor(hrs / 24);
-  return `${days}d ago`;
-}
-
 export function FeedPreviewItem({ item }: FeedPreviewItemProps) {
+  const { t } = useTranslation();
+
+  function relativeTime(pubDate: string): string {
+    if (!pubDate) return "";
+    const diff = Date.now() - new Date(pubDate).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return t("feedPreviewItem.minsAgo", { count: mins });
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return t("feedPreviewItem.hoursAgo", { count: hrs });
+    const days = Math.floor(hrs / 24);
+    return t("feedPreviewItem.daysAgo", { count: days });
+  }
+
   const snippet = item.description
     ? item.description.replace(/<[^>]+>/g, "").slice(0, 150)
     : "";

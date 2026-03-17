@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useFeedBuilder } from "../../hooks/useFeedBuilder";
 import { TagInput } from "./TagInput";
 import { CountryLanguageSelect } from "./CountryLanguageSelect";
@@ -17,6 +18,7 @@ interface FeedBuilderFormProps {
 export function FeedBuilderForm({ feed, feedId, onSuccess }: FeedBuilderFormProps) {
   const { state, generatedUrl, loading, error, update, setSlug, loadFeed, submit } = useFeedBuilder(feedId);
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [initialized, setInitialized] = useState(false);
 
   // Load existing feed on mount
@@ -29,11 +31,11 @@ export function FeedBuilderForm({ feed, feedId, onSuccess }: FeedBuilderFormProp
     e.preventDefault();
     try {
       const saved = await submit();
-      toast({ title: "Feed saved!", description: `"${saved.name}" has been saved.` });
+      toast({ title: t("feedBuilder.feedSaved"), description: t("feedBuilder.feedSavedDesc", { name: saved.name }) });
       onSuccess?.(saved);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Failed to save feed";
-      toast({ title: "Error", description: msg, variant: "destructive" });
+      const msg = err instanceof Error ? err.message : t("feedBuilder.failedToSave");
+      toast({ title: t("common.error"), description: msg, variant: "destructive" });
     }
   }
 
@@ -42,35 +44,35 @@ export function FeedBuilderForm({ feed, feedId, onSuccess }: FeedBuilderFormProp
       {/* Basic Info */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label htmlFor="name" className="text-sm font-medium">Feed Name <span className="text-destructive">*</span></label>
+          <label htmlFor="name" className="text-sm font-medium">{t("feedBuilder.feedName")} <span className="text-destructive">*</span></label>
           <input
             id="name"
             value={state.name}
             onChange={(e) => update("name", e.target.value)}
-            placeholder="My Tech Feed"
+            placeholder={t("feedBuilder.feedNamePlaceholder")}
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           />
         </div>
         <div className="space-y-1.5">
-          <label htmlFor="slug" className="text-sm font-medium">Slug <span className="text-destructive">*</span></label>
+          <label htmlFor="slug" className="text-sm font-medium">{t("feedBuilder.slug")} <span className="text-destructive">*</span></label>
           <input
             id="slug"
             value={state.slug}
             onChange={(e) => setSlug(e.target.value)}
-            placeholder="my-tech-feed"
+            placeholder={t("feedBuilder.slugPlaceholder")}
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           />
-          <p className="text-xs text-muted-foreground">Used in your RSS URL: /rss/<span className="font-mono">{state.slug || "slug"}</span></p>
+          <p className="text-xs text-muted-foreground">{t("feedBuilder.slugHelp", { slug: state.slug || "slug" })}</p>
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="description" className="text-sm font-medium">Description</label>
+        <label htmlFor="description" className="text-sm font-medium">{t("feedBuilder.descriptionLabel")}</label>
         <textarea
           id="description"
           value={state.description}
           onChange={(e) => update("description", e.target.value)}
-          placeholder="Optional description for this feed"
+          placeholder={t("feedBuilder.descriptionPlaceholder")}
           rows={2}
           className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-none"
         />
@@ -78,50 +80,50 @@ export function FeedBuilderForm({ feed, feedId, onSuccess }: FeedBuilderFormProp
 
       {/* Search Parameters */}
       <div className="rounded-lg border p-4 space-y-4">
-        <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Search Filters</h3>
+        <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">{t("feedBuilder.searchFilters")}</h3>
 
         <TagInput
-          label="Keywords (AND)"
-          placeholder="Add keyword..."
+          label={t("feedBuilder.keywordsAnd")}
+          placeholder={t("feedBuilder.keywordsPlaceholder")}
           tags={state.keywords}
           onChange={(v) => update("keywords", v)}
-          helpText="All keywords must appear in the article"
+          helpText={t("feedBuilder.keywordsHelp")}
         />
         <TagInput
-          label="Exact Phrases"
-          placeholder="Add exact phrase..."
+          label={t("feedBuilder.exactPhrases")}
+          placeholder={t("feedBuilder.exactPhrasesPlaceholder")}
           tags={state.exact_phrases}
           onChange={(v) => update("exact_phrases", v)}
           maxTags={10}
-          helpText='Wrapped in quotes — e.g. "artificial intelligence"'
+          helpText={t("feedBuilder.exactPhrasesHelp")}
         />
         <TagInput
-          label="OR Keywords"
-          placeholder="Add OR keyword..."
+          label={t("feedBuilder.orKeywords")}
+          placeholder={t("feedBuilder.orKeywordsPlaceholder")}
           tags={state.or_keywords}
           onChange={(v) => update("or_keywords", v)}
-          helpText="At least one of these must appear"
+          helpText={t("feedBuilder.orKeywordsHelp")}
         />
         <TagInput
-          label="Excluded Keywords"
-          placeholder="Add excluded keyword..."
+          label={t("feedBuilder.excludedKeywords")}
+          placeholder={t("feedBuilder.excludedKeywordsPlaceholder")}
           tags={state.excluded_keywords}
           onChange={(v) => update("excluded_keywords", v)}
-          helpText="Articles containing these will be excluded"
+          helpText={t("feedBuilder.excludedKeywordsHelp")}
         />
         <TagInput
-          label="Domains"
-          placeholder="e.g. reuters.com"
+          label={t("feedBuilder.domains")}
+          placeholder={t("feedBuilder.domainsPlaceholder")}
           tags={state.domains}
           onChange={(v) => update("domains", v)}
           maxTags={10}
-          helpText="Filter to specific news sources"
+          helpText={t("feedBuilder.domainsHelp")}
         />
       </div>
 
       {/* Locale & Time */}
       <div className="rounded-lg border p-4 space-y-4">
-        <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Locale & Time</h3>
+        <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">{t("feedBuilder.localeTime")}</h3>
         <CountryLanguageSelect
           country={state.country}
           language={state.language}
@@ -159,7 +161,7 @@ export function FeedBuilderForm({ feed, feedId, onSuccess }: FeedBuilderFormProp
           onChange={(e) => update("is_public", e.target.checked)}
           className="h-4 w-4 rounded border-input"
         />
-        <label htmlFor="is_public" className="text-sm">Make this feed publicly accessible</label>
+        <label htmlFor="is_public" className="text-sm">{t("feedBuilder.makePublic")}</label>
       </div>
 
       {/* Error */}
@@ -171,7 +173,7 @@ export function FeedBuilderForm({ feed, feedId, onSuccess }: FeedBuilderFormProp
         disabled={loading}
         className="inline-flex items-center justify-center h-10 px-6 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
-        {loading ? "Saving..." : feedId ? "Update Feed" : "Save Feed"}
+        {loading ? t("feedBuilder.saving") : feedId ? t("feedBuilder.updateFeed") : t("feedBuilder.saveFeed")}
       </button>
     </form>
   );

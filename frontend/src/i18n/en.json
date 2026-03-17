@@ -1,0 +1,183 @@
+{
+  "common": {
+    "error": "Error",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "previous": "Previous",
+    "next": "Next",
+    "tryAgain": "Try again",
+    "copiedToClipboard": "Copied!",
+    "unexpectedError": "Unexpected error",
+    "unexpectedErrorDesc": "An unexpected error occurred."
+  },
+  "header": {
+    "brand": "RSS Builder",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "login": "Login"
+  },
+  "footer": {
+    "text": "© {{year}} RSS Builder · Powered by Google News RSS"
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "tryAgain": "Try again"
+  },
+  "home": {
+    "title": "Custom Google News RSS Feeds",
+    "description": "Create personalized RSS feeds with keyword, domain, country, and time filters. Use them in any RSS reader — Feedly, Inoreader, Thunderbird, and more.",
+    "getStarted": "Get Started",
+    "howItWorks": "How it works",
+    "step1Title": "1. Configure",
+    "step1Desc": "Set your keywords, domains, country, language, and time filters to target exactly the news you care about.",
+    "step2Title": "2. Preview",
+    "step2Desc": "See matching news articles in real-time before saving. Refine your filters until you get the perfect feed.",
+    "step3Title": "3. Subscribe",
+    "step3Desc": "Get a unique proxy RSS URL to paste into any RSS reader. Your feed stays fresh and updates automatically."
+  },
+  "login": {
+    "title": "Sign in",
+    "subtitle": "We'll send you a magic link to sign in.",
+    "magicLinkSent": "Magic link sent!",
+    "magicLinkSentDesc": "We've sent a magic link to <strong>{{email}}</strong>. Check your inbox!",
+    "useDifferentEmail": "Use a different email",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "invalidEmail": "Please enter a valid email address.",
+    "genericError": "Something went wrong. Please try again.",
+    "sending": "Sending...",
+    "sendMagicLink": "Send Magic Link"
+  },
+  "authCallback": {
+    "timedOut": "Verification timed out. Please try signing in again.",
+    "verifying": "Verifying your login...",
+    "tryAgain": "Try again"
+  },
+  "dashboard": {
+    "title": "My Feeds",
+    "feedCount_one": "{{count}} feed",
+    "feedCount_other": "{{count}} feeds",
+    "createNewFeed": "Create New Feed",
+    "searchPlaceholder": "Search feeds...",
+    "noMatchTitle": "No feeds match your search",
+    "noMatchDesc": "Try a different search term.",
+    "emptyTitle": "No feeds yet",
+    "emptyDesc": "Create your first custom Google News RSS feed to get started.",
+    "createFirstFeed": "Create Your First Feed",
+    "feedDeleted": "Feed deleted",
+    "feedDeletedDesc": "\"{{name}}\" has been removed.",
+    "couldNotDelete": "Could not delete feed.",
+    "feedDeactivated": "Feed deactivated",
+    "feedActivated": "Feed activated",
+    "couldNotUpdate": "Could not update feed.",
+    "pageOf": "Page {{current}} of {{total}}"
+  },
+  "feedCreate": {
+    "title": "Create New Feed",
+    "description": "Configure your Google News RSS feed filters.",
+    "feedCreated": "Feed created!",
+    "feedCreatedDesc": "\"{{name}}\" is ready to use."
+  },
+  "feedEdit": {
+    "title": "Edit Feed",
+    "description": "Update the filters for \"{{name}}\".",
+    "notFoundTitle": "Feed Not Found",
+    "notFoundDesc": "This feed doesn't exist or you don't have access.",
+    "backToDashboard": "Back to Dashboard",
+    "feedUpdated": "Feed updated!",
+    "feedUpdatedDesc": "\"{{name}}\" has been saved."
+  },
+  "feedBuilder": {
+    "feedName": "Feed Name",
+    "feedNamePlaceholder": "My Tech Feed",
+    "slug": "Slug",
+    "slugPlaceholder": "my-tech-feed",
+    "slugHelp": "Used in your RSS URL: /rss/{{slug}}",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Optional description for this feed",
+    "searchFilters": "Search Filters",
+    "keywordsAnd": "Keywords (AND)",
+    "keywordsPlaceholder": "Add keyword...",
+    "keywordsHelp": "All keywords must appear in the article",
+    "exactPhrases": "Exact Phrases",
+    "exactPhrasesPlaceholder": "Add exact phrase...",
+    "exactPhrasesHelp": "Wrapped in quotes — e.g. \"artificial intelligence\"",
+    "orKeywords": "OR Keywords",
+    "orKeywordsPlaceholder": "Add OR keyword...",
+    "orKeywordsHelp": "At least one of these must appear",
+    "excludedKeywords": "Excluded Keywords",
+    "excludedKeywordsPlaceholder": "Add excluded keyword...",
+    "excludedKeywordsHelp": "Articles containing these will be excluded",
+    "domains": "Domains",
+    "domainsPlaceholder": "e.g. reuters.com",
+    "domainsHelp": "Filter to specific news sources",
+    "localeTime": "Locale & Time",
+    "makePublic": "Make this feed publicly accessible",
+    "feedSaved": "Feed saved!",
+    "feedSavedDesc": "\"{{name}}\" has been saved.",
+    "failedToSave": "Failed to save feed",
+    "saving": "Saving...",
+    "updateFeed": "Update Feed",
+    "saveFeed": "Save Feed"
+  },
+  "countrySelect": {
+    "label": "Country & Language",
+    "selectCountry": "Select country...",
+    "searchCountry": "Search country...",
+    "noResults": "No results.",
+    "langInfo": "Language: {{language}} · CEID: {{ceid}}"
+  },
+  "tagInput": {
+    "maxReached": "Maximum {{max}} tags reached",
+    "countHelp": "{{count}}/{{max}} · Press Enter or comma to add"
+  },
+  "timeRange": {
+    "label": "Time Range",
+    "noFilter": "No filter",
+    "last24h": "Last 24 hours",
+    "last7d": "Last 7 days",
+    "last30d": "Last 30 days",
+    "lastYear": "Last year",
+    "customRange": "Custom range",
+    "afterDate": "After date",
+    "beforeDate": "Before date"
+  },
+  "urlPreview": {
+    "label": "Generated URL",
+    "placeholder": "Configure your feed to generate a URL",
+    "copied": "Copied!",
+    "copiedDesc": "URL copied to clipboard."
+  },
+  "feedCard": {
+    "today": "today",
+    "yesterday": "yesterday",
+    "daysAgo": "{{count}}d ago",
+    "monthsAgo": "{{count}}mo ago",
+    "active": "Active",
+    "inactive": "Inactive",
+    "actions": "Actions",
+    "copyRssUrl": "Copy RSS URL",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "moreKeywords": "+{{count}} more",
+    "views": "{{count}} views",
+    "created": "Created {{time}}",
+    "deleteConfirm": "Delete \"{{name}}\"?",
+    "deleteWarning": "This action cannot be undone."
+  },
+  "feedPreview": {
+    "title": "Feed Preview",
+    "preview": "Preview",
+    "placeholder": "Click \"Preview\" to see matching articles, or try different keywords.",
+    "articleCount_one": "Showing {{count}} article",
+    "articleCount_other": "Showing {{count}} articles"
+  },
+  "feedPreviewItem": {
+    "minsAgo": "{{count}}m ago",
+    "hoursAgo": "{{count}}h ago",
+    "daysAgo": "{{count}}d ago"
+  }
+}

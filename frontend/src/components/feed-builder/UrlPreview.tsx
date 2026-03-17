@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Copy, Check } from "lucide-react";
 import { useToast } from "../ui/use-toast";
 
@@ -9,18 +10,19 @@ interface UrlPreviewProps {
 export function UrlPreview({ url }: UrlPreviewProps) {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   async function handleCopy() {
     if (!url) return;
     await navigator.clipboard.writeText(url);
     setCopied(true);
-    toast({ title: "Copied!", description: "URL copied to clipboard." });
+    toast({ title: t("urlPreview.copied"), description: t("urlPreview.copiedDesc") });
     setTimeout(() => setCopied(false), 2000);
   }
 
   return (
     <div className="space-y-1.5">
-      <label className="text-sm font-medium">Generated URL</label>
+      <label className="text-sm font-medium">{t("urlPreview.label")}</label>
       <div className="flex items-center gap-2 rounded-md border border-input bg-muted/50 px-3 py-2">
         {url ? (
           <>
@@ -38,7 +40,7 @@ export function UrlPreview({ url }: UrlPreviewProps) {
           </>
         ) : (
           <span className="text-sm text-muted-foreground italic">
-            Configure your feed to generate a URL
+            {t("urlPreview.placeholder")}
           </span>
         )}
       </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { COUNTRIES } from "../../constants/countries";
 import { cn } from "../../lib/utils";
@@ -13,6 +14,7 @@ interface CountryLanguageSelectProps {
 export function CountryLanguageSelect({ country, language, ceid, onChange }: CountryLanguageSelectProps) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const { t } = useTranslation();
 
   const selected = COUNTRIES.find((c) => c.gl === country);
   const filtered = COUNTRIES.filter((c) =>
@@ -28,14 +30,14 @@ export function CountryLanguageSelect({ country, language, ceid, onChange }: Cou
 
   return (
     <div className="space-y-1.5">
-      <label className="text-sm font-medium">Country & Language</label>
+      <label className="text-sm font-medium">{t("countrySelect.label")}</label>
       <div className="relative">
         <button
           type="button"
           onClick={() => setOpen(!open)}
           className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
-          <span>{selected ? `${selected.flag} ${selected.name}` : "Select country..."}</span>
+          <span>{selected ? `${selected.flag} ${selected.name}` : t("countrySelect.selectCountry")}</span>
           <ChevronsUpDown className="h-4 w-4 opacity-50 shrink-0 ml-2" />
         </button>
 
@@ -46,13 +48,13 @@ export function CountryLanguageSelect({ country, language, ceid, onChange }: Cou
                 autoFocus
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search country..."
+                placeholder={t("countrySelect.searchCountry")}
                 className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
               />
             </div>
             <div className="max-h-60 overflow-y-auto p-1">
               {filtered.length === 0 ? (
-                <p className="py-2 px-3 text-sm text-muted-foreground">No results.</p>
+                <p className="py-2 px-3 text-sm text-muted-foreground">{t("countrySelect.noResults")}</p>
               ) : (
                 filtered.map((cfg) => (
                   <button
@@ -73,7 +75,7 @@ export function CountryLanguageSelect({ country, language, ceid, onChange }: Cou
         )}
       </div>
       <p className="text-xs text-muted-foreground">
-        Language: <span className="font-mono">{language}</span> · CEID: <span className="font-mono">{ceid}</span>
+        {t("countrySelect.langInfo", { language, ceid })}
       </p>
     </div>
   );

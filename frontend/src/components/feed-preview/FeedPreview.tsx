@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useFeedPreview } from "../../hooks/useFeedPreview";
 import { FeedPreviewItem } from "./FeedPreviewItem";
 import { Skeleton } from "../ui/skeleton";
@@ -8,18 +9,19 @@ interface FeedPreviewProps {
 
 export function FeedPreview({ url }: FeedPreviewProps) {
   const { items, loading, error, preview } = useFeedPreview();
+  const { t } = useTranslation();
 
   return (
     <div className="rounded-lg border">
       <div className="flex items-center justify-between px-4 py-3 border-b">
-        <h3 className="text-sm font-semibold">Feed Preview</h3>
+        <h3 className="text-sm font-semibold">{t("feedPreview.title")}</h3>
         <button
           type="button"
           onClick={() => preview(url)}
           disabled={!url || loading}
           className="inline-flex items-center justify-center h-8 px-3 rounded-md bg-secondary text-secondary-foreground text-xs font-medium hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          {loading ? "Loading..." : "Preview"}
+          {loading ? t("common.loading") : t("feedPreview.preview")}
         </button>
       </div>
 
@@ -41,14 +43,14 @@ export function FeedPreview({ url }: FeedPreviewProps) {
 
         {!loading && !error && items.length === 0 && (
           <p className="py-4 text-sm text-muted-foreground text-center">
-            Click "Preview" to see matching articles, or try different keywords.
+            {t("feedPreview.placeholder")}
           </p>
         )}
 
         {!loading && !error && items.length > 0 && (
           <>
             <p className="pt-3 pb-1 text-xs text-muted-foreground">
-              Showing {items.length} article{items.length !== 1 ? "s" : ""}
+              {t("feedPreview.articleCount", { count: items.length })}
             </p>
             {items.map((item, i) => (
               <FeedPreviewItem key={i} item={item} />
